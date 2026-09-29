@@ -153,22 +153,43 @@
           </button>
         </div>
 
-        <div class="ref-work-grid">
-          <!-- Card 1: Architectural Floor Plan (AutoCAD Drafting) -->
-          <article class="ref-project-card card-dark">
+        <div class="ref-work-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+          
+          <!-- Card 1: OptiBeam AI (Featured Python App) -->
+          <article class="ref-project-card card-dark" style="border: 2px solid var(--primary-red);">
             <div class="ref-card-header">
-              <h3>ARCHITECTURAL<br>FLOOR PLAN</h3>
+              <h3>OPTIBEAM AI<br>OPTIMIZER</h3>
             </div>
-            <div class="ref-card-image-box">
-              <img src="project-floor-plan.png" alt="AutoCAD 2D Architectural Floor Plan Design" class="zoomable-image">
+            <div class="ref-card-image-box" style="background: var(--primary-red); opacity: 0.12;"></div>
+            <div class="ref-card-header" style="z-index: 2; margin-top: 15px;">
+              <p style="font-size: 14px; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">AI genetic algorithm web app for automated steel I-beam optimization and AISC code compliance.</p>
             </div>
             <div class="ref-card-footer">
-              <span class="ref-card-cat">AUTOCAD DRAFTING</span>
+              <a href="https://optibeam-ai-d9sjawsedkvnpq7scnxprp.streamlit.app/" target="_blank" rel="noopener noreferrer" class="ref-card-cat" style="color: var(--primary-red); display: inline-flex; align-items: center; gap: 6px;">
+                LAUNCH APP <i data-lucide="external-link" class="lucide-icon-inline"></i>
+              </a>
               <span class="ref-card-year">2026</span>
             </div>
           </article>
 
-          <!-- Card 2: Residential Complex (ETABS & Revit BIM) -->
+          <!-- Card 2: StructPredict (Featured ML Thesis App) -->
+          <article class="ref-project-card card-dark">
+            <div class="ref-card-header">
+              <h3>STRUCTPREDICT<br>UHPFRC ML</h3>
+            </div>
+            <div class="ref-card-image-box" style="background: #ffffff; opacity: 0.08;"></div>
+            <div class="ref-card-header" style="z-index: 2; margin-top: 15px;">
+              <p style="font-size: 14px; color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Ensemble regressor model predicting full load-deflection behavior of steel fiber-reinforced concrete beams.</p>
+            </div>
+            <div class="ref-card-footer">
+              <a href="https://structpredict-i2dqcwbhbcycpqq6xlxxgp.streamlit.app/" target="_blank" rel="noopener noreferrer" class="ref-card-cat" style="color: #ffffff; display: inline-flex; align-items: center; gap: 6px;">
+                LAUNCH APP <i data-lucide="external-link" class="lucide-icon-inline"></i>
+              </a>
+              <span class="ref-card-year">2026</span>
+            </div>
+          </article>
+
+          <!-- Card 3: Residential Complex (ETABS & Revit BIM) -->
           <article class="ref-project-card card-angled">
             <div class="red-geometric-slice"></div>
             <div class="ref-card-header">
@@ -183,17 +204,20 @@
             </div>
           </article>
 
-          <!-- Card 3: Interactive All Projects Archive Card -->
-          <article class="ref-project-card card-dark card-projects-trigger" id="cardProjectsTrigger" style="cursor: pointer; border: 2px solid var(--primary-red);">
+          <!-- Card 4: Architectural Floor Plan (AutoCAD Drafting) -->
+          <article class="ref-project-card card-dark">
             <div class="ref-card-header">
-              <h3>ALL SOFTWARE<br>& PROJECTS</h3>
+              <h3>ARCHITECTURAL<br>FLOOR PLAN</h3>
             </div>
-            <div class="ref-card-image-box" style="background: var(--primary-red); opacity: 0.15;"></div>
+            <div class="ref-card-image-box">
+              <img src="project-floor-plan.png" alt="AutoCAD 2D Architectural Floor Plan Design" class="zoomable-image">
+            </div>
             <div class="ref-card-footer">
-              <span class="ref-card-cat" style="color: var(--primary-red);">EXPLORE LIST <i data-lucide="arrow-right" class="lucide-icon-inline"></i></span>
+              <span class="ref-card-cat">AUTOCAD DRAFTING</span>
               <span class="ref-card-year">2026</span>
             </div>
           </article>
+
         </div>
       </div>
     </section>
