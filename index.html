@@ -30,6 +30,7 @@
         <a href="#capabilities" class="ref-nav-link">SERVICES</a>
         <a href="#about" class="ref-nav-link">ABOUT</a>
         <a href="#experience" class="ref-nav-link">EXPERIENCE</a>
+        <a href="#" id="openResumeModalNav" class="ref-nav-link" style="color: var(--primary-red);">RESUME</a>
         <a href="#contact" class="ref-nav-link">CONTACT</a>
       </nav>
 
@@ -48,6 +49,7 @@
     <a href="#capabilities">SERVICES</a>
     <a href="#about">ABOUT</a>
     <a href="#experience">EXPERIENCE</a>
+    <a href="#" id="openResumeModalMobile">RESUME</a>
     <a href="#contact">CONTACT</a>
   </div>
 
@@ -581,12 +583,37 @@
     </div>
   </div>
 
+  <!-- Resume Viewer Modal -->
+  <div id="resumeModal" class="projects-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="projects-modal-backdrop"></div>
+    <div class="projects-modal-content" style="max-width: 900px; height: 85vh; display: flex; flex-direction: column;">
+      <button id="resumeModalClose" class="projects-modal-close" aria-label="Close resume view"><i data-lucide="x"></i></button>
+      <div class="projects-modal-header" style="flex-shrink: 0; margin-bottom: 15px;">
+        <span class="ref-about-badge">CURRICULUM VITAE</span>
+        <h2>TAHMEED UR RAWFUN — RESUME</h2>
+        <p>Civil & Structural Engineer | Computational & Machine Learning Applications</p>
+      </div>
+      <div style="flex-grow: 1; width: 100%; height: 100%; background: #f9f9f9; border: 2px solid #000; overflow: hidden; display: flex; flex-direction: column;">
+        <!-- PDF Viewer Embed -->
+        <iframe src="My Resume.pdf" style="width: 100%; height: 100%; border: none;" title="Tahmeed Ur Rawfun Resume">
+          <p style="padding: 20px; text-align: center;">Your browser does not support PDF embedding. Please download the resume below.</p>
+        </iframe>
+      </div>
+      <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px; flex-shrink: 0;">
+        <a href="My Resume.pdf" download="Tahmeed_Ur_Rawfun_Resume.pdf" target="_blank" style="background: var(--primary-red); color: #fff; padding: 10px 20px; text-decoration: none; font-weight: 700; font-family: 'JetBrains Mono', monospace; display: inline-flex; align-items: center; gap: 8px;">
+          DOWNLOAD PDF <i data-lucide="download" class="lucide-icon-inline"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
   <script>
     lucide.createIcons();
 
-    // Modal Interaction for Projects List
+    // Modal Interaction for Projects List & Resume Viewer
     document.addEventListener("DOMContentLoaded", () => {
+      // Projects Modal
       const modal = document.getElementById("projectsModal");
       const openBtn1 = document.getElementById("openProjectsModal");
       const openBtn2 = document.getElementById("cardProjectsTrigger");
@@ -611,9 +638,36 @@
       closeBtn?.addEventListener("click", closeModal);
       backdrop?.addEventListener("click", closeModal);
 
+      // Resume Modal
+      const resModal = document.getElementById("resumeModal");
+      const openResNav = document.getElementById("openResumeModalNav");
+      const openResMob = document.getElementById("openResumeModalMobile");
+      const closeResBtn = document.getElementById("resumeModalClose");
+      const resBackdrop = resModal?.querySelector(".projects-modal-backdrop");
+
+      const openRes = (e) => {
+        if (e) e.preventDefault();
+        resModal?.classList.add("is-open");
+        resModal?.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeRes = () => {
+        resModal?.classList.remove("is-open");
+        resModal?.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+
+      openResNav?.addEventListener("click", openRes);
+      openResMob?.addEventListener("click", openRes);
+      closeResBtn?.addEventListener("click", closeRes);
+      resBackdrop?.addEventListener("click", closeRes);
+
+      // Global Escape Key Listener
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal?.classList.contains("is-open")) {
-          closeModal();
+        if (e.key === "Escape") {
+          if (modal?.classList.contains("is-open")) closeModal();
+          if (resModal?.classList.contains("is-open")) closeRes();
         }
       });
     });
