@@ -49,7 +49,7 @@
     <a href="#capabilities">SERVICES</a>
     <a href="#about">ABOUT</a>
     <a href="#experience">EXPERIENCE</a>
-    <a href="#" id="openResumeModalMobile">RESUME</a>
+    <a href="#" id="openResumeModalMobile" style="color: var(--primary-red);">RESUME</a>
     <a href="#contact">CONTACT</a>
   </div>
 
@@ -616,7 +616,6 @@
       // Projects Modal
       const modal = document.getElementById("projectsModal");
       const openBtn1 = document.getElementById("openProjectsModal");
-      const openBtn2 = document.getElementById("cardProjectsTrigger");
       const closeBtn = document.getElementById("projectsModalClose");
       const backdrop = modal?.querySelector(".projects-modal-backdrop");
 
@@ -634,7 +633,6 @@
       };
 
       openBtn1?.addEventListener("click", openModal);
-      openBtn2?.addEventListener("click", openModal);
       closeBtn?.addEventListener("click", closeModal);
       backdrop?.addEventListener("click", closeModal);
 
