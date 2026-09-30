@@ -444,9 +444,9 @@
           </div>
 
           <div class="ref-resume-btn-wrap">
-            <a href="My Resume.pdf" class="ref-download-resume-btn" download="Tahmeed_Ur_Rawfun_Resume.pdf" target="_blank">
-              <span>DOWNLOAD RESUME</span>
-              <i data-lucide="download" class="lucide-icon-inline"></i>
+            <a href="#" id="openResumeModalBtn" class="ref-download-resume-btn" style="background: var(--primary-red); color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px; font-weight: 700;">
+              <span>VIEW RESUME ON SITE</span>
+              <i data-lucide="file-text" class="lucide-icon-inline"></i>
             </a>
           </div>
         </div>
@@ -583,27 +583,34 @@
     </div>
   </div>
 
-  <!-- Resume Viewer Modal -->
+  <!-- Mobile-Safe Resume Options Modal -->
   <div id="resumeModal" class="projects-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="projects-modal-backdrop"></div>
-    <div class="projects-modal-content" style="max-width: 900px; height: 85vh; display: flex; flex-direction: column;">
+    <div class="projects-modal-content" style="max-width: 620px; text-align: center; padding: 45px 30px;">
       <button id="resumeModalClose" class="projects-modal-close" aria-label="Close resume view"><i data-lucide="x"></i></button>
-      <div class="projects-modal-header" style="flex-shrink: 0; margin-bottom: 15px;">
+      <div class="projects-modal-header" style="margin-bottom: 25px;">
         <span class="ref-about-badge">CURRICULUM VITAE</span>
         <h2>TAHMEED UR RAWFUN — RESUME</h2>
-        <p>Civil & Structural Engineer | Computational & Machine Learning Applications</p>
+        <p style="margin-top: 8px;">Civil & Structural Engineer | Computational & Machine Learning Applications</p>
       </div>
-      <div style="flex-grow: 1; width: 100%; height: 100%; background: #f9f9f9; border: 2px solid #000; overflow: hidden; display: flex; flex-direction: column;">
-        <!-- PDF Viewer Embed -->
-        <iframe src="My Resume.pdf" style="width: 100%; height: 100%; border: none;" title="Tahmeed Ur Rawfun Resume">
-          <p style="padding: 20px; text-align: center;">Your browser does not support PDF embedding. Please download the resume below.</p>
-        </iframe>
+      
+      <div style="background: var(--bg-alt); border: 1.5px solid var(--border-light); padding: 30px 20px; border-radius: 4px; margin-bottom: 22px;">
+        <p style="font-size: 16px; color: var(--text-dark); margin-bottom: 20px; font-weight: 600;">
+          Select how you would like to view my official resume:
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="My Resume.pdf" target="_blank" rel="noopener noreferrer" style="background: #000; color: #fff; padding: 14px 24px; text-decoration: none; font-weight: 700; font-family: 'JetBrains Mono', monospace; display: inline-flex; align-items: center; gap: 8px; border-radius: 2px;">
+            VIEW PDF IN BROWSER <i data-lucide="external-link" class="lucide-icon-inline"></i>
+          </a>
+          <a href="My Resume.pdf" download="Tahmeed_Ur_Rawfun_Resume.pdf" style="background: var(--primary-red); color: #fff; padding: 14px 24px; text-decoration: none; font-weight: 700; font-family: 'JetBrains Mono', monospace; display: inline-flex; align-items: center; gap: 8px; border-radius: 2px;">
+            DOWNLOAD PDF <i data-lucide="download" class="lucide-icon-inline"></i>
+          </a>
+        </div>
       </div>
-      <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px; flex-shrink: 0;">
-        <a href="My Resume.pdf" download="Tahmeed_Ur_Rawfun_Resume.pdf" target="_blank" style="background: var(--primary-red); color: #fff; padding: 10px 20px; text-decoration: none; font-weight: 700; font-family: 'JetBrains Mono', monospace; display: inline-flex; align-items: center; gap: 8px;">
-          DOWNLOAD PDF <i data-lucide="download" class="lucide-icon-inline"></i>
-        </a>
-      </div>
+      
+      <p style="font-size: 13px; color: var(--text-dim); line-height: 1.5;">
+        Note: If viewing inside social apps like Messenger or Facebook, tap the top-right corner options and select <strong>"Open in Browser"</strong> for the best viewing experience.
+      </p>
     </div>
   </div>
 
@@ -640,6 +647,7 @@
       const resModal = document.getElementById("resumeModal");
       const openResNav = document.getElementById("openResumeModalNav");
       const openResMob = document.getElementById("openResumeModalMobile");
+      const openResBtn = document.getElementById("openResumeModalBtn");
       const closeResBtn = document.getElementById("resumeModalClose");
       const resBackdrop = resModal?.querySelector(".projects-modal-backdrop");
 
@@ -658,6 +666,7 @@
 
       openResNav?.addEventListener("click", openRes);
       openResMob?.addEventListener("click", openRes);
+      openResBtn?.addEventListener("click", openRes);
       closeResBtn?.addEventListener("click", closeRes);
       resBackdrop?.addEventListener("click", closeRes);
 
