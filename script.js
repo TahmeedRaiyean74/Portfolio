@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener("click", toggleMenu);
 
     mobileDrawer.querySelectorAll("a").forEach((link) => {
+      // Don't close drawer if clicking resume modal trigger
+      if (link.id === "openResumeModalMobile") return;
       link.addEventListener("click", () => {
         mobileDrawer.classList.remove("open");
         menuToggle.classList.remove("open");
@@ -144,13 +146,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const animateSkills = (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Find all fills within the intersecting category
           const fills = entry.target.querySelectorAll(".ref-skill-fill[data-width]");
           fills.forEach((fill, index) => {
             setTimeout(() => {
               fill.style.width = fill.getAttribute("data-width") + "%";
               fill.classList.add("animated");
-            }, index * 150); // Staggered animation
+            }, index * 150);
           });
           observer.unobserve(entry.target);
         }
@@ -162,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
       rootMargin: "0px 0px -50px 0px",
     });
 
-    // Observe each skill category separately for independent animation
     document.querySelectorAll(".ref-skill-category").forEach((category) => {
       skillObserver.observe(category);
     });
