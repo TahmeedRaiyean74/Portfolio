@@ -395,24 +395,6 @@ button {
   justify-content: flex-end;
 }
 
-.ref-red-flag {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 150px;
-  height: 100%;
-  background: var(--primary-red);
-  color: #ffffff;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  padding: 24px;
-  text-align: right;
-  line-height: 1.45;
-  z-index: 1;
-}
-
 .ref-hero-portrait-wrap {
   position: relative;
   z-index: 2;
@@ -1313,7 +1295,7 @@ body.lightbox-open {
 .lightbox-next { right: 24px; }
 
 /* --------------------------------------------------------------------------
-   PROJECTS MODAL STYLING
+   PROJECTS & RESUME MODAL STYLING
    -------------------------------------------------------------------------- */
 .projects-modal {
   position: fixed;
