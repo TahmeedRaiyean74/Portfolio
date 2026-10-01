@@ -167,4 +167,48 @@ document.addEventListener("DOMContentLoaded", () => {
       skillObserver.observe(category);
     });
   }
+
+  // ------------------------------------------------------------------------
+  // 5. SECURITY BLOCKERS & PRIVACY CURTAIN FOR SECURE PDF VIEWER
+  // ------------------------------------------------------------------------
+  document.addEventListener("keydown", function (e) {
+    const pdfModal = document.getElementById("securePdfModal");
+    if (pdfModal && pdfModal.classList.contains("is-open")) {
+      if ((e.ctrlKey && (e.key === "s" || e.key === "p" || e.key === "u" || e.key === "i")) || e.key === "PrintScreen") {
+        e.preventDefault();
+        triggerCurtainWarning();
+        alert("Downloading, printing, and capturing screenshots are restricted for this design report.");
+      }
+    }
+  });
+
+  const pdfModalContent = document.querySelector("#securePdfModal .pdf-modal-content");
+  if (pdfModalContent) {
+    pdfModalContent.addEventListener("contextmenu", (e) => e.preventDefault());
+  }
+
+  // Trigger privacy curtain when window loses focus (e.g. Snipping Tool activation)
+  const secureModal = document.getElementById("securePdfModal");
+  const curtain = document.getElementById("screenshotCurtain");
+
+  window.addEventListener("blur", () => {
+    if (secureModal && secureModal.classList.contains("is-open") && curtain) {
+      curtain.classList.add("active");
+    }
+  });
+
+  window.addEventListener("focus", () => {
+    if (curtain) {
+      curtain.classList.remove("active");
+    }
+  });
+
+  function triggerCurtainWarning() {
+    if (curtain) {
+      curtain.classList.add("active");
+      setTimeout(() => {
+        curtain.classList.remove("active");
+      }, 3000);
+    }
+  }
 });
