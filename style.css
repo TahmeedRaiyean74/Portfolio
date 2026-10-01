@@ -216,13 +216,13 @@ button {
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 15px rgba(230, 30, 37, 0.25);
-  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .ref-talk-btn:hover {
   background: var(--primary-red-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(230, 30, 37, 0.4);
+  box-shadow: 0 0 22px rgba(230, 30, 37, 0.65), 0 0 45px rgba(230, 30, 37, 0.35);
 }
 
 .ref-menu-toggle {
@@ -362,7 +362,7 @@ button {
   font-weight: 700;
   letter-spacing: 2px;
   color: var(--primary-black);
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .ref-cta-circle {
@@ -376,7 +376,7 @@ button {
   justify-content: center;
   font-size: 16px;
   font-weight: 700;
-  transition: transform var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   box-shadow: 0 4px 12px rgba(230, 30, 37, 0.3);
 }
 
@@ -385,7 +385,35 @@ button {
 }
 
 .ref-hero-cta:hover .ref-cta-circle {
-  transform: translateX(6px);
+  transform: scale(1.1);
+}
+
+/* Clean Primary CTA Glow on Circle Only (No White Box Background Shadow Bleed) */
+.ref-hero-cta.primary-cta {
+  background: transparent;
+  border: none;
+  box-shadow: none !important;
+}
+
+.ref-hero-cta.primary-cta:hover .ref-cta-circle {
+  transform: scale(1.12);
+  box-shadow: 0 0 20px rgba(230, 30, 37, 0.75), 0 0 40px rgba(230, 30, 37, 0.35);
+}
+
+.ref-hero-cta.primary-cta:hover .ref-cta-text {
+  color: var(--primary-red);
+}
+
+/* Secondary outline button glow */
+.secondary-cta {
+  transition: all var(--transition-fast);
+}
+
+.secondary-cta:hover {
+  background-color: #000000;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4), 0 0 35px rgba(230, 30, 37, 0.25);
+  transform: translateY(-2px);
 }
 
 .ref-hero-right {
@@ -981,8 +1009,8 @@ button {
   width: 100%;
   padding: 15px 28px;
   border: 2px solid var(--primary-black);
-  background: #ffffff;
-  color: var(--primary-black);
+  background: var(--primary-red);
+  color: #ffffff;
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 700;
@@ -991,8 +1019,10 @@ button {
 }
 
 .ref-download-resume-btn:hover {
-  background: var(--primary-black);
+  background: var(--primary-red-hover);
   color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(230, 30, 37, 0.65), 0 0 40px rgba(230, 30, 37, 0.35);
 }
 
 /* --------------------------------------------------------------------------
@@ -1112,13 +1142,14 @@ button {
   font-size: 32px;
   font-weight: 700;
   flex-shrink: 0;
-  transition: transform var(--transition-fast), background var(--transition-fast);
+  transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .ref-circle-link-btn:hover {
   transform: scale(1.08);
   background: #000000;
   color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 .ref-contact-details {
@@ -1338,7 +1369,7 @@ body.lightbox-open {
   padding: 30px 35px;
   border-radius: 4px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-  margin-top: 20px; /* Gives top breathing room for the floating close button */
+  margin-top: 20px;
 }
 
 .pdf-modal-close {
@@ -1355,7 +1386,7 @@ body.lightbox-open {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   z-index: 10;
 }
 
@@ -1363,6 +1394,7 @@ body.lightbox-open {
   background: #ffffff;
   color: var(--primary-black);
   transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(230, 30, 37, 0.8);
 }
 
 .pdf-modal-header {
@@ -1389,7 +1421,7 @@ body.lightbox-open {
   position: relative;
   width: 100%;
   flex-grow: 1;
-  background: #525659; /* Standard professional PDF viewer canvas background grey */
+  background: #525659;
   border-radius: 2px;
   overflow: hidden;
 }
