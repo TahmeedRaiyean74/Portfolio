@@ -212,30 +212,34 @@
         <div class="ref-work-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
           
           <!-- Card 1: Residential Complex (ETABS & Revit BIM) -->
-          <article class="ref-project-card card-angled" style="border: 2px solid var(--primary-red);">
+          <article class="ref-project-card card-angled" style="border: 2px solid var(--primary-red); cursor: pointer;" onclick="openPdfModal('Final Year Design Project _(Structural Part)_Tahmeed_Ur_Rawfun.pdf')">
             <div class="red-geometric-slice"></div>
             <div class="ref-card-header">
               <h3>MULTI-STOREY<br>RESIDENTIAL COMPLEX</h3>
             </div>
             <div class="ref-card-image-box">
-              <img src="project-structural-model.png" alt="3D Multi-Storey Building ETABS Model" class="zoomable-image">
+              <img src="project-structural-model.png" alt="3D Multi-Storey Building ETABS Model">
             </div>
             <div class="ref-card-footer">
-              <span class="ref-card-cat" style="color: var(--primary-red);">ETABS & SAP2000 ANALYSIS</span>
+              <span class="ref-card-cat" style="color: var(--primary-red); display: inline-flex; align-items: center; gap: 5px;">
+                <i data-lucide="eye" style="width: 14px; height: 14px;"></i> VIEW REPORT
+              </span>
               <span class="ref-card-year">2026</span>
             </div>
           </article>
 
           <!-- Card 2: Architectural Floor Plan (AutoCAD Drafting) -->
-          <article class="ref-project-card card-dark">
+          <article class="ref-project-card card-dark" style="cursor: pointer;" onclick="openPdfModal('Final Year Design Project _(Structural Part)_Tahmeed_Ur_Rawfun.pdf')">
             <div class="ref-card-header">
               <h3>STRUCTURAL DRAWINGS<br>& FLOOR PLAN</h3>
             </div>
             <div class="ref-card-image-box">
-              <img src="project-floor-plan.png" alt="AutoCAD 2D Structural Drafting Plan" class="zoomable-image">
+              <img src="project-floor-plan.png" alt="AutoCAD 2D Structural Drafting Plan">
             </div>
             <div class="ref-card-footer">
-              <span class="ref-card-cat">AUTOCAD & REVIT BIM</span>
+              <span class="ref-card-cat" style="color: #fff; display: inline-flex; align-items: center; gap: 5px;">
+                <i data-lucide="eye" style="width: 14px; height: 14px;"></i> VIEW DRAWINGS
+              </span>
               <span class="ref-card-year">2026</span>
             </div>
           </article>
@@ -427,7 +431,7 @@
             <div class="ref-skill-bars-list">
               <div class="ref-skill-item" data-percent="90">
                 <div class="ref-skill-info">
-                  <span>PYTHON (NUMPY / PANDAS)</span>
+                  <span>PYTHON (NUMPY / PANDAS / MATPLOTLIB)</span>
                   <strong>90%</strong>
                 </div>
                 <div class="ref-skill-track">
@@ -544,6 +548,29 @@
     </div>
   </div>
 
+  <!-- Full-Screen Accessible & Downloadable PDF Viewer Modal -->
+  <div id="securePdfModal" class="pdf-modal" style="display: none;" role="dialog" aria-modal="true">
+    <div class="pdf-modal-backdrop" onclick="closePdfModal()"></div>
+    <div class="pdf-modal-content">
+      <button class="pdf-modal-close" onclick="closePdfModal()" aria-label="Close viewer"><i data-lucide="x"></i></button>
+      <div class="pdf-modal-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <span class="ref-about-badge">DOCUMENT VIEWER</span>
+          <h2>DESIGN PROJECT & STRUCTURAL REPORT</h2>
+          <p>Easily view, scroll, zoom, or download the full report below.</p>
+        </div>
+        <div>
+          <a id="pdfDownloadBtn" href="" download class="ref-download-resume-btn" style="background: var(--primary-red); color: #fff; padding: 10px 20px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; border-radius: 2px;">
+            DOWNLOAD PDF <i data-lucide="download" class="lucide-icon-inline"></i>
+          </a>
+        </div>
+      </div>
+      <div class="pdf-iframe-container" style="position: relative; width: 100%; flex-grow: 1;">
+        <iframe id="securePdfFrame" src="" width="100%" height="100%" style="border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+
   <!-- Projects List Modal -->
   <div id="projectsModal" class="projects-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="projects-modal-backdrop"></div>
@@ -556,12 +583,12 @@
       </div>
       <div class="projects-list-container">
         <!-- Project 1: Multi-Storey Building -->
-        <div class="project-list-item">
+        <div class="project-list-item" style="cursor: pointer;" onclick="openPdfModal('Final Year Design Project _(Structural Part)_Tahmeed_Ur_Rawfun.pdf')">
           <div class="project-list-info">
-            <h3>Multi-Storey Residential Building Design & Analysis</h3>
+            <h3>Multi-Storey Residential Building Design & Analysis (Report Viewer)</h3>
             <p>Conducted comprehensive 3D finite element building simulation in ETABS and SAP2000, configuring floor diaphragms, material properties, and load combinations to ensure compliance under gravity and lateral forces.</p>
           </div>
-          <span class="project-list-tag">ETABS / SAP2000</span>
+          <span class="project-list-tag">ETABS / VIEW PDF</span>
         </div>
 
         <!-- Project 2: Wind Load Calculator -->
@@ -638,6 +665,35 @@
   <script>
     lucide.createIcons();
 
+    // Accessible PDF Modal Functions with FitH width tuning
+    function openPdfModal(pdfFile) {
+      const modal = document.getElementById("securePdfModal");
+      const frame = document.getElementById("securePdfFrame");
+      const downloadBtn = document.getElementById("pdfDownloadBtn");
+      if (modal && frame) {
+        frame.src = pdfFile + "#view=FitH";
+        if (downloadBtn) {
+          downloadBtn.href = pdfFile;
+          downloadBtn.setAttribute("download", pdfFile);
+        }
+        modal.style.display = "flex";
+        modal.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+        lucide.createIcons();
+      }
+    }
+
+    function closePdfModal() {
+      const modal = document.getElementById("securePdfModal");
+      const frame = document.getElementById("securePdfFrame");
+      if (modal && frame) {
+        modal.style.display = "none";
+        modal.classList.remove("is-open");
+        frame.src = "";
+        document.body.style.overflow = "";
+      }
+    }
+
     // Modal Interaction for Projects List & Resume Viewer
     document.addEventListener("DOMContentLoaded", () => {
       // Projects Modal
@@ -695,6 +751,7 @@
         if (e.key === "Escape") {
           if (modal?.classList.contains("is-open")) closeModal();
           if (resModal?.classList.contains("is-open")) closeRes();
+          closePdfModal();
         }
       });
     });
